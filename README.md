@@ -7,6 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+На основании этого видео
+
+[![Основное видео](http://img.youtube.com/vi/jV7lVrtZVko/0.jpg)](https://www.youtube.com/watch?v=jV7lVrtZVko&list=PLD5U-C5KK50X1KcfueA73sGSjBsd8vgVG "Основное видео")
+
+
 ## Create Laravel
 
 1. Создаем новый проект `lara.vue.loc`

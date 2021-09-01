@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $dataUrls = [
+        [
+            'title' => "Google",
+            'url'   => 'google.com',
+        ],
+        [
+            'title' => "Yahoo",
+            'url'   => 'yahoo.com',
+        ],
+    ];
+
+    //    dd($dataUrls);
+
+    return view('welcome', [
+        'dataUrls' => $dataUrls,
+    ]);
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

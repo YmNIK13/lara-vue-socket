@@ -1886,12 +1886,14 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
+      this.is_refresh = true;
       axios.get("/ajax/get-urls").then(function (response) {
         console.log(response.data);
         _this.urlData = response.data;
         _this.id++;
+        _this.is_refresh = false;
       });
-      console.log('Prop Component mounted.', this.urlData);
+      console.log('ajax Component mounted.', this.urlData);
     }
   }
 });

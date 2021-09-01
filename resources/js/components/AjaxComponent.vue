@@ -37,13 +37,15 @@ export default {
     },
     methods: {
         update: function () {
+            this.is_refresh = true;
             axios.get(`/ajax/get-urls`)
-                .then((response) => {
+                .then( (response) => {
                     console.log(response.data)
                     this.urlData = response.data
-                    this.id ++
+                    this.id++
+                    this.is_refresh = false
                 })
-            console.log('Prop Component mounted.', this.urlData)
+            console.log('ajax Component mounted.', this.urlData)
         }
     }
 }

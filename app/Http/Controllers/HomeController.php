@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\ClassA;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -68,6 +69,8 @@ class HomeController extends Controller
                 'url'   => 'yahoo.com',
             ],
         ];
+
+        sleep(1);
 
         return response()->json($dataUrls);
     }

@@ -14,27 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $dataUrls = [
-        [
-            'title' => "Google",
-            'url'   => 'google.com',
-        ],
-        [
-            'title' => "Yahoo",
-            'url'   => 'yahoo.com',
-        ],
-    ];
-
-    //    dd($dataUrls);
-
-    return view('welcome', [
-        'dataUrls' => $dataUrls,
-    ]);
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
+
+Route::get('/ajax/get-urls', [App\Http\Controllers\HomeController::class, 'getUrls'])->name('getUrls');
 
 

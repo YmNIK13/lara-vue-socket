@@ -2,6 +2,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <button @click="update"
+                        class="btn btn-default text mb-1"
+                        v-if="!is_refresh">Обновить - {{ id }}...
+                </button>
+                <span class="badge badge-primary mb-1" v-if="is_refresh">Обновление...</span>
                 <table class="table">
                     <thead>
                     <tr>
@@ -10,7 +15,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(url, inx) in urlData" :key="inx">
+                    <tr v-for="url in urlData" :key="url.url">
                         <td>{{ url.title }}</td>
                         <td>{{ url.url }}</td>
                     </tr>
@@ -23,13 +28,21 @@
 
 <script>
 export default {
-    props: [
-        'urlData'
-    ],
+    data: (vm) => ({
+        "id": 0,
+        "is_refresh": false,
+        "urlData": [],
+    }),
     mounted() {
     },
     methods: {
         update: function () {
+            axios.get(`/ajax/get-urls`)
+                .then((response) => {
+                    console.log(response.data)
+                    this.urlData = response.data
+                    this.id ++
+                })
             console.log('Prop Component mounted.', this.urlData)
         }
     }

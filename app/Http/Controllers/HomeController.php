@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -16,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        //        $this->middleware('auth');
     }
 
     /**
@@ -30,7 +31,6 @@ class HomeController extends Controller
     }
 
 
-
     /**
      * Show the application dashboard.
      *
@@ -41,11 +41,11 @@ class HomeController extends Controller
         $dataUrls = [
             [
                 'title' => "Google",
-                'url' => 'google.com',
+                'url'   => 'google.com',
             ],
             [
                 'title' => "Yahoo",
-                'url' => 'yahoo.com',
+                'url'   => 'yahoo.com',
             ],
         ];
 
@@ -74,4 +74,22 @@ class HomeController extends Controller
 
         return response()->json($dataUrls);
     }
+
+
+    public function dataChart(): JsonResponse
+    {
+        $dataUrls = [
+            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label'           => 'Продажи',
+                    'backgroundColor' => '#F26202',
+                    'data'            => [15000, 5000, 10000, 30000],
+                ],
+            ],
+        ];
+
+        return response()->json($dataUrls);
+    }
+
 }

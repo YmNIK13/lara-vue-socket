@@ -84,7 +84,23 @@ class HomeController extends Controller
                 [
                     'label'           => 'Продажи',
                     'backgroundColor' => '#F26202',
-                    'data'            => [15000, 5000, 10000, 30000],
+                    'data'            => [15000, 7500, 10000, 3000],
+                ],
+            ],
+        ];
+
+        return response()->json($dataUrls);
+    }
+
+    public function dataChartPie(): JsonResponse
+    {
+        $dataUrls = [
+            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label'           => 'Продажи',
+                    'backgroundColor' => ['#F26202','#1762a2','#026202','#F26fa2',],
+                    'data'            => [1500, 5000, 4000, 3000],
                 ],
             ],
         ];

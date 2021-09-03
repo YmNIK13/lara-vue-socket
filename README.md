@@ -59,4 +59,10 @@
     npm i socket.io
 
 
-В файле `.env` меняем broadcast на `BROADCAST_DRIVER=redis`
+В файле `.env` меняем:
+    
+    BROADCAST_DRIVER=redis
+    REDIS_CLIENT=predis
+    REDIS_PREFIX=''
+
+    LARAVEL_ECHO_PORT=6001

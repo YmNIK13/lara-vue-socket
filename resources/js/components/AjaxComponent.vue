@@ -45,7 +45,6 @@ export default {
                     this.id++
                     this.is_refresh = false
                 })
-            console.log('ajax Component mounted.', this.urlData)
         }
     }
 }

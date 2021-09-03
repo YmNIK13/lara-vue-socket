@@ -7,7 +7,8 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "server": "node server.js"
     },
     "devDependencies": {
         "axios": "^0.21",
@@ -26,9 +27,9 @@
     },
     "dependencies": {
         "chart.js": "^2.9.4",
-        "express": "^4.17.1",
         "ioredis": "^4.27.9",
         "socket.io": "^4.2.0",
+        "socket.io-client": "^4.2.0",
         "vue-chartjs": "^3.5.1"
     }
 }

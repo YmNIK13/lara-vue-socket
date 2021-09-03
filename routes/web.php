@@ -28,6 +28,7 @@ Route::get('/ajax/get-urls', [App\Http\Controllers\HomeController::class, 'getUr
 
 Route::get('/ajax/get-data-chart', [App\Http\Controllers\HomeController::class, 'dataChart'])->name('dataChart');
 Route::get('/ajax/get-data-random-chart', [App\Http\Controllers\HomeController::class, 'dataChartRandom'])->name('dataChartRandom');
+Route::get('/ajax/socket-chart', [App\Http\Controllers\HomeController::class, 'newEvent'])->name('newEvent');
 
 Route::get('/ajax/get-data-chart-pie', [App\Http\Controllers\HomeController::class, 'dataChartPie'])->name('dataChartPie');
 

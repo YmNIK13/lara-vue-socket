@@ -364,6 +364,11 @@
 
         <hr/>
 
+        <h2>Socket</h2>
+        <socket-component></socket-component>
+
+        <hr/>
+
         <h2>Динамический</h2>
         <chart-line-dynamic-component></chart-line-dynamic-component>
 

@@ -23,14 +23,10 @@ export default {
     },
     methods: {
         update: function () {
-            this.is_refresh = true;
             axios.get(`/ajax/get-data-chart-pie`)
                 .then((response) => {
                     this.data = response.data
-
-                    throw 'sfdgs';
                 })
-            console.log('ajax Component mounted.', this.data)
         }
     }
 }

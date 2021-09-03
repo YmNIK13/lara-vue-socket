@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Core\ClassA;
+use App\Events\NewEvent;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -41,11 +42,11 @@ class HomeController extends Controller
         $dataUrls = [
             [
                 'title' => "Google",
-                'url'   => 'google.com',
+                'url' => 'google.com',
             ],
             [
                 'title' => "Yahoo",
-                'url'   => 'yahoo.com',
+                'url' => 'yahoo.com',
             ],
         ];
 
@@ -62,11 +63,11 @@ class HomeController extends Controller
         $dataUrls = [
             [
                 'title' => "Google",
-                'url'   => 'google.com',
+                'url' => 'google.com',
             ],
             [
                 'title' => "Yahoo",
-                'url'   => 'yahoo.com',
+                'url' => 'yahoo.com',
             ],
         ];
 
@@ -79,17 +80,17 @@ class HomeController extends Controller
     public function dataChart(): JsonResponse
     {
         $dataUrls = [
-            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'labels' => ['март', 'апрель', 'май', 'июнь'],
             'datasets' => [
                 [
-                    'label'           => 'Продажи',
+                    'label' => 'Продажи',
                     'backgroundColor' => '#F26202',
-                    'data'            => [3500, 5000, 7000, 4000],
+                    'data' => [3500, 5000, 7000, 4000],
                 ],
                 [
-                    'label'           => 'Прошлый год',
+                    'label' => 'Прошлый год',
                     'backgroundColor' => '#1762a2',
-                    'data'            => [15000, 7500, 10000, 3000],
+                    'data' => [15000, 7500, 10000, 3000],
                 ],
             ],
         ];
@@ -100,17 +101,17 @@ class HomeController extends Controller
     public function dataChartRandom(): JsonResponse
     {
         $dataUrls = [
-            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'labels' => ['март', 'апрель', 'май', 'июнь'],
             'datasets' => [
                 [
-                    'label'           => 'Золото',
+                    'label' => 'Золото',
                     'backgroundColor' => '#F26202',
-                    'data'            => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),],
+                    'data' => [rand(0, 40000), rand(0, 40000), rand(0, 40000), rand(0, 40000),],
                 ],
                 [
-                    'label'           => 'Серебро',
+                    'label' => 'Серебро',
                     'backgroundColor' => '#1762a2',
-                    'data'            => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),],
+                    'data' => [rand(0, 40000), rand(0, 40000), rand(0, 40000), rand(0, 40000),],
                 ],
             ],
         ];
@@ -121,17 +122,47 @@ class HomeController extends Controller
     public function dataChartPie(): JsonResponse
     {
         $dataUrls = [
-            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'labels' => ['март', 'апрель', 'май', 'июнь'],
             'datasets' => [
                 [
-                    'label'           => 'Продажи',
-                    'backgroundColor' => ['#F26202','#1762a2','#026202','#F26fa2',],
-                    'data'            => [1500, 5000, 4000, 3000],
+                    'label' => 'Продажи',
+                    'backgroundColor' => ['#F26202', '#1762a2', '#026202', '#F26fa2',],
+                    'data' => [1500, 5000, 4000, 3000],
                 ],
             ],
         ];
 
         return response()->json($dataUrls);
+    }
+
+
+    public function newEvent(Request $request): JsonResponse
+    {
+        $results = [
+            'labels' => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label' => 'Прошлый год',
+                    'backgroundColor' => '#1762a2',
+                    'data' => [15000, 7500, 10000, 3000],
+                ],
+            ],
+        ];
+
+        if ($request->has('label')) {
+            $results['labels'][] = $request->input('label');
+            $results['datasets'][0]['data'][] = (integer) $request->input('sale') ?? 0;
+
+            if ($request->has('is_realtime')) {
+                if (filter_var($request->input('is_realtime'), FILTER_VALIDATE_BOOLEAN)) {
+                    // вызываем событие
+                    event(new NewEvent($results));
+
+                }
+            }
+        }
+
+        return response()->json($results);
     }
 
 }

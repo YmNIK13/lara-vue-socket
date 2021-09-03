@@ -8,6 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+window.io = require('socket.io-client');
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -22,9 +24,12 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('prop-component', require('./components/PropComponent').default);
 Vue.component('ajax-component', require('./components/AjaxComponent').default);
+
 Vue.component('chart-line-component', require('./components/ChartLineComponent').default);
 Vue.component('chart-pie-component', require('./components/ChartPieComponent').default);
 Vue.component('chart-line-dynamic-component', require('./components/ChartLineDynamicComponent').default);
+
+Vue.component('socket-component', require('./components/SocketComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

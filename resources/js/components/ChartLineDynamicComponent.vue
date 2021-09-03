@@ -24,12 +24,10 @@ export default {
     },
     methods: {
         update: function () {
-            this.is_refresh = true;
             axios.get(`/ajax/get-data-random-chart`)
                 .then((response) => {
                     this.data = response.data
                 })
-            console.log('ajax Component mounted.', this.data)
         }
     }
 }

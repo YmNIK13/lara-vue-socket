@@ -84,7 +84,33 @@ class HomeController extends Controller
                 [
                     'label'           => 'Продажи',
                     'backgroundColor' => '#F26202',
+                    'data'            => [3500, 5000, 7000, 4000],
+                ],
+                [
+                    'label'           => 'Прошлый год',
+                    'backgroundColor' => '#1762a2',
                     'data'            => [15000, 7500, 10000, 3000],
+                ],
+            ],
+        ];
+
+        return response()->json($dataUrls);
+    }
+
+    public function dataChartRandom(): JsonResponse
+    {
+        $dataUrls = [
+            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label'           => 'Золото',
+                    'backgroundColor' => '#F26202',
+                    'data'            => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),],
+                ],
+                [
+                    'label'           => 'Серебро',
+                    'backgroundColor' => '#1762a2',
+                    'data'            => [rand(0,40000),rand(0,40000),rand(0,40000),rand(0,40000),],
                 ],
             ],
         ];

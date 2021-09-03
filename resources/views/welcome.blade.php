@@ -362,6 +362,24 @@
 
     <div id="app" class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
+        <hr/>
+
+        <h2>Динамический</h2>
+        <chart-line-dynamic-component></chart-line-dynamic-component>
+
+
+        <hr/>
+
+        <h2>круговая</h2>
+        <chart-pie-component></chart-pie-component>
+
+        <hr/>
+
+        <h2>Линейный</h2>
+        <chart-line-component></chart-line-component>
+
+
+
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="p-6">
@@ -386,13 +404,18 @@
                     <div class="ml-12">
                     </div>
                 </div>
+
+                <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                    <div class="ml-12">
+                    </div>
+                </div>
+
+                <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                    <div class="ml-12">
+                    </div>
+                </div>
             </div>
         </div>
-
-
-        <chart-line-component></chart-line-component>
-        <chart-pie-component></chart-pie-component>
-
 
 
         <div class="flex justify-center mt-4 sm:items-center sm:justify-between">

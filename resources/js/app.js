@@ -24,6 +24,7 @@ Vue.component('prop-component', require('./components/PropComponent').default);
 Vue.component('ajax-component', require('./components/AjaxComponent').default);
 Vue.component('chart-line-component', require('./components/ChartLineComponent').default);
 Vue.component('chart-pie-component', require('./components/ChartPieComponent').default);
+Vue.component('chart-line-dynamic-component', require('./components/ChartLineDynamicComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

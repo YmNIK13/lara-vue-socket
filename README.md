@@ -40,4 +40,23 @@
 
         npm run watch-poll
 
+---
 
+##  Устанавливаем стек Redis + Socket.io
+
+### Ставим Redis
+
+    sudo apt install redis-server
+
+### Ставим библиотеку для бека 
+
+    composer require predis/predis
+
+### Ставим библиотеку для фронта 
+
+    npm i express
+    npm i ioredis
+    npm i socket.io
+
+
+В файле `.env` меняем broadcast на `BROADCAST_DRIVER=redis`

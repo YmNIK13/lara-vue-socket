@@ -389,6 +389,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="p-6">
                     <div class="ml-12">
+                        <socket-chat-component></socket-chat-component>
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="ml-12">
                         <prop-component :url-data="{{json_encode($dataUrls)}}"></prop-component>
                     </div>
                 </div>

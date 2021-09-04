@@ -30,6 +30,8 @@ Route::get('/ajax/get-data-chart', [App\Http\Controllers\HomeController::class, 
 Route::get('/ajax/get-data-random-chart', [App\Http\Controllers\HomeController::class, 'dataChartRandom'])->name('dataChartRandom');
 Route::get('/ajax/socket-chart', [App\Http\Controllers\HomeController::class, 'newEvent'])->name('newEvent');
 
+Route::get('/ajax/send-message', [App\Http\Controllers\HomeController::class, 'sendMessage'])->name('sendMessage');
+
 Route::get('/ajax/get-data-chart-pie', [App\Http\Controllers\HomeController::class, 'dataChartPie'])->name('dataChartPie');
 
 

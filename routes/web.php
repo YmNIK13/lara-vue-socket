@@ -24,6 +24,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
+
+
+
 Route::get('/ajax/get-urls', [App\Http\Controllers\HomeController::class, 'getUrls'])->name('getUrls');
 
 Route::get('/ajax/get-data-chart', [App\Http\Controllers\HomeController::class, 'dataChart'])->name('dataChart');

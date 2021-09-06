@@ -54,15 +54,18 @@
 
 ### Ставим библиотеку для фронта 
 
-    npm i express
     npm i ioredis
     npm i socket.io
 
+---
 
-В файле `.env` меняем:
-    
+## В файле `.env`
+
+Меняем:
+
     BROADCAST_DRIVER=redis
+
+Добавляем:
+
     REDIS_CLIENT=predis
     REDIS_PREFIX=''
-
-    LARAVEL_ECHO_PORT=6001

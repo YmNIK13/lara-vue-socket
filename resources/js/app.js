@@ -32,6 +32,7 @@ Vue.component('chart-line-dynamic-component', require('./components/chart/ChartL
 Vue.component('chart-socket-component', require('./components/chart/ChartSocketComponent').default);
 
 Vue.component('chat-socket-component', require('./components/chat/ChatSocketComponent').default);
+Vue.component('chat-private-socket-component', require('./components/chat/ChatPrivateSocketComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

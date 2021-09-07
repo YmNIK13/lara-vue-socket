@@ -13,5 +13,6 @@ Route::get('/get-data-chart-pie', [App\Http\Controllers\ChartController::class, 
 Route::get('/socket-chart', [App\Http\Controllers\ChartController::class, 'newEvent'])->name('newEvent');
 
 
-Route::get('/send-message', [App\Http\Controllers\ChatController::class, 'sendMessage'])->name('sendMessage');
+Route::post('/send-message', [App\Http\Controllers\ChatController::class, 'sendMessage'])->name('sendMessage');
+Route::post('/send-private-message', [App\Http\Controllers\ChatController::class, 'sendPrivateMessage'])->name('sendPrivateMessage');
 

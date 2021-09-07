@@ -38,7 +38,7 @@ export default {
         sendMessage: function () {
 
             axios({
-                method: 'get',
+                method: 'post',
                 url: `/ajax/send-message`,
                 params: {
                     message: this.message,

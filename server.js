@@ -23,7 +23,7 @@ const Redis = require('ioredis')
 
 
 const redis = new Redis()
-redis.subscribe("news-action", (err, count) => {
+redis.psubscribe("news-action.*", (err, count) => {
     if (err) {
         console.error("Failed to subscribe: %s", err.message);
     } else {
@@ -31,7 +31,7 @@ redis.subscribe("news-action", (err, count) => {
     }
 });
 
-redis.on("message", function (channel, message) {
+redis.on("pmessage", function (pattern, channel, message) {
     console.log(`Received ${message} from ${channel}`)
 
     const messageIo = JSON.parse(message)

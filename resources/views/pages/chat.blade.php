@@ -9,7 +9,7 @@
             <hr/>
 
             <h1>Общий чат</h1>
-            <socket-chat-component></socket-chat-component>
+            <chat-socket-component></chat-socket-component>
 
         </div>
     </div>

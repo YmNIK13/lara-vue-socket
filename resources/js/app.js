@@ -22,16 +22,16 @@ window.io = require('socket.io-client');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('prop-component', require('./components/PropComponent').default);
-Vue.component('ajax-component', require('./components/AjaxComponent').default);
 
-Vue.component('chart-line-component', require('./components/ChartLineComponent').default);
-Vue.component('chart-pie-component', require('./components/ChartPieComponent').default);
-Vue.component('chart-line-dynamic-component', require('./components/ChartLineDynamicComponent').default);
+Vue.component('table-prop-component', require('./components/table/TablePropComponent').default);
+Vue.component('table-ajax-component', require('./components/table/TableAjaxComponent').default);
 
+Vue.component('chart-line-component', require('./components/chart/ChartLineComponent').default);
+Vue.component('chart-pie-component', require('./components/chart/ChartPieComponent').default);
+Vue.component('chart-line-dynamic-component', require('./components/chart/ChartLineDynamicComponent').default);
+Vue.component('chart-socket-component', require('./components/chart/ChartSocketComponent').default);
 
-Vue.component('socket-component', require('./components/SocketComponent').default);
-Vue.component('socket-chat-component', require('./components/SocketChatComponent').default);
+Vue.component('chat-socket-component', require('./components/chat/ChatSocketComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

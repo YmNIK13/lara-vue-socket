@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            <prop-component :url-data="{{json_encode($dataUrls)}}"></prop-component>
 
-            <hr>
-            <h2>ajax component</h2>
+            <hr/>
 
-            <ajax-component/>
+            <h1>Общий чат</h1>
+            <socket-chat-component></socket-chat-component>
+
         </div>
     </div>
 </div>

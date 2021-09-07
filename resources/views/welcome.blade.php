@@ -362,26 +362,6 @@
 
     <div id="app" class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
-        <hr/>
-
-        <h2>Socket</h2>
-        <socket-component></socket-component>
-
-        <hr/>
-
-        <h2>Динамический</h2>
-        <chart-line-dynamic-component></chart-line-dynamic-component>
-
-
-        <hr/>
-
-        <h2>круговая</h2>
-        <chart-pie-component></chart-pie-component>
-
-        <hr/>
-
-        <h2>Линейный</h2>
-        <chart-line-component></chart-line-component>
 
 
 
@@ -389,19 +369,6 @@
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="p-6">
                     <div class="ml-12">
-                        <socket-chat-component></socket-chat-component>
-                    </div>
-                </div>
-
-                <div class="p-6">
-                    <div class="ml-12">
-                        <prop-component :url-data="{{json_encode($dataUrls)}}"></prop-component>
-                    </div>
-                </div>
-
-                <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                    <div class="ml-12">
-                        <ajax-component/>
                     </div>
                 </div>
 
@@ -411,20 +378,6 @@
                     </div>
                 </div>
 
-                <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                    <div class="ml-12">
-                    </div>
-                </div>
-
-                <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                    <div class="ml-12">
-                    </div>
-                </div>
-
-                <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                    <div class="ml-12">
-                    </div>
-                </div>
             </div>
         </div>
 

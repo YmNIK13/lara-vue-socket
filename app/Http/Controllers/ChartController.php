@@ -2,83 +2,108 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewEvent;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ChartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function index(): View
     {
-        //
+        return view('pages.chart');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function dataChart(): JsonResponse
     {
-        //
+        $dataUrls = [
+            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label'           => 'Продажи',
+                    'backgroundColor' => '#F26202',
+                    'data'            => [3500, 5000, 7000, 4000],
+                ],
+                [
+                    'label'           => 'Прошлый год',
+                    'backgroundColor' => '#1762a2',
+                    'data'            => [15000, 7500, 10000, 3000],
+                ],
+            ],
+        ];
+
+        return response()->json($dataUrls);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function dataChartRandom(): JsonResponse
     {
-        //
+        $dataUrls = [
+            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label'           => 'Золото',
+                    'backgroundColor' => '#F26202',
+                    'data'            => [rand(0, 40000), rand(0, 40000), rand(0, 40000), rand(0, 40000),],
+                ],
+                [
+                    'label'           => 'Серебро',
+                    'backgroundColor' => '#1762a2',
+                    'data'            => [rand(0, 40000), rand(0, 40000), rand(0, 40000), rand(0, 40000),],
+                ],
+            ],
+        ];
+
+        return response()->json($dataUrls);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function dataChartPie(): JsonResponse
     {
-        //
+        $dataUrls = [
+            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label'           => 'Продажи',
+                    'backgroundColor' => ['#F26202', '#1762a2', '#026202', '#F26fa2',],
+                    'data'            => [1500, 5000, 4000, 3000],
+                ],
+            ],
+        ];
+
+        return response()->json($dataUrls);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function newEvent(Request $request): JsonResponse
     {
-        //
+        $results = [
+            'labels'   => ['март', 'апрель', 'май', 'июнь'],
+            'datasets' => [
+                [
+                    'label'           => 'Прошлый год',
+                    'backgroundColor' => '#1762a2',
+                    'data'            => [15000, 7500, 10000, 3000],
+                ],
+            ],
+        ];
+
+        if ($request->has('label')) {
+            $results['labels'][] = $request->input('label');
+            $results['datasets'][0]['data'][] = (integer) $request->input('sale') ?? 0;
+
+            if ($request->has('is_realtime')) {
+                if (filter_var($request->input('is_realtime'), FILTER_VALIDATE_BOOLEAN)) {
+                    // вызываем событие
+                    event(new NewEvent($results));
+                }
+            }
+        }
+
+        return response()->json($results);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

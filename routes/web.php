@@ -18,7 +18,15 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/table', [App\Http\Controllers\TableController::class, 'index'])->name('table');
+
+    Route::get('/chart', [App\Http\Controllers\ChartController::class, 'index'])->name('chart');
+
+    Route::get('/chat', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
+
 });
 
 
@@ -27,14 +35,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
 
 
-Route::get('/ajax/get-urls', [App\Http\Controllers\HomeController::class, 'getUrls'])->name('getUrls');
-
-Route::get('/ajax/get-data-chart', [App\Http\Controllers\HomeController::class, 'dataChart'])->name('dataChart');
-Route::get('/ajax/get-data-random-chart', [App\Http\Controllers\HomeController::class, 'dataChartRandom'])->name('dataChartRandom');
-Route::get('/ajax/socket-chart', [App\Http\Controllers\HomeController::class, 'newEvent'])->name('newEvent');
-
-Route::get('/ajax/send-message', [App\Http\Controllers\HomeController::class, 'sendMessage'])->name('sendMessage');
-
-Route::get('/ajax/get-data-chart-pie', [App\Http\Controllers\HomeController::class, 'dataChartPie'])->name('dataChartPie');
 
 

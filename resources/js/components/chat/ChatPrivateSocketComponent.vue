@@ -36,7 +36,7 @@ export default {
         usersSelect: []
     }),
     mounted() {
-        const socket = io('http://localhost:3000')
+        const socket = io('/socket')
 
         // подписываемся на общий чат
         socket.on('news-action.' + ':App\\Events\\PrivateMessage', (messageObj) => {

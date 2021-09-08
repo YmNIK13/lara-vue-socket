@@ -51,6 +51,4 @@ redis.on("pmessage", function (pattern, channel, message) {
 //     console.log('messageBuffer', channel, message);
 // });
 
-server.listen(3000, function () {
-    console.log('Listening on Port: 3000')
-})
+server.listen(4242, () => console.log('Listening on Port: 4242'))

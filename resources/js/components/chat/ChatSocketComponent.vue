@@ -1,13 +1,14 @@
 <template>
-    <div class="container">
+    <div class="container container-chat">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="from-group">
-                    <textarea rows="6" readonly="" class="form-control">{{dataMessages.join('\n')}}</textarea>
+                    <textarea rows="12" readonly="" class="form-control">{{dataMessages.join('\n')}}</textarea>
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Укажите Имя" v-model="user_name">
-                    <input type="text" class="form-control" style="flex-grow:2" placeholder="Наберите сообщение" v-model="message">
+                    <input type="text" class="form-control" style="flex-grow:2" placeholder="Наберите сообщение" autofocus
+                           v-model="message" @keyup.enter="sendMessage">
                     <div class="input-group-append">
                         <button @click="sendMessage" class="btn btn-outline-secondary" type="button">отправить</button>
                     </div>
@@ -90,3 +91,16 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.container-chat {
+    width: 100%;
+}
+
+
+@media (min-width: 850px) {
+    .container-chat {
+        width: 800px;
+    }
+}
+</style>

@@ -28,7 +28,7 @@ export default {
     mounted() {
         const socket = io('/')
 
-        socket.on('news-action:App\\Events\\NewMessage', (messageObj) => {
+        socket.on('news-action.:App\\Events\\NewMessage', (messageObj) => {
             console.log('messageObj', messageObj)
             // публичное поле из события laravel
             this.dataMessages.push(messageObj.data.message)

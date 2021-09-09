@@ -27,7 +27,7 @@ export default {
         sale: 500,
     }),
     mounted() {
-        const socket = io('/socket')
+        const socket = io('/')
 
         socket.on('news-action:App\\Events\\NewEvent', (dataEvent) => {
             console.log('dataEvent', dataEvent)

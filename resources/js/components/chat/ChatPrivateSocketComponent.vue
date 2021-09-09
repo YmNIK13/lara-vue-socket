@@ -36,7 +36,7 @@ export default {
         usersSelect: []
     }),
     mounted() {
-        const socket = io('/socket')
+        const socket = io('/')
 
         // подписываемся на общий чат
         socket.on('news-action.' + ':App\\Events\\PrivateMessage', (messageObj) => {

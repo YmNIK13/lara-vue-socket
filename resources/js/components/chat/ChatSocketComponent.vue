@@ -26,7 +26,7 @@ export default {
         message: "",
     }),
     mounted() {
-        const socket = io('/socket')
+        const socket = io('/')
 
         socket.on('news-action:App\\Events\\NewMessage', (messageObj) => {
             console.log('messageObj', messageObj)

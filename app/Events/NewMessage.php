@@ -27,10 +27,10 @@ class NewMessage implements ShouldBroadcastNow
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel
+     * @return Channel
      */
     public function broadcastOn()
     {
-        return new Channel('news-action');
+        return new Channel('news-action.');
     }
 }

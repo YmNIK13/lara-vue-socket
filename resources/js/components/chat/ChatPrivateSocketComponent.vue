@@ -37,6 +37,7 @@ export default {
     }),
     mounted() {
         const socket = io('/')
+        // const socket = io('/socket')
 
         // подписываемся на общий чат
         socket.on('news-action.' + ':App\\Events\\PrivateMessage', (messageObj) => {
@@ -46,7 +47,7 @@ export default {
         })
 
         // подписываемся на личный чат
-        socket.on('news-action.' + this.owner.id + ':App\\Events\\PrivateMessage', (messageObj) => {
+        socket.on('news-action.' + this.owner.id + ':App\\Events\\NewEvent', (messageObj) => {
             console.log('messageObj', messageObj)
             // публичное поле из события laravel
             this.dataMessages.push(messageObj.data.message.user + ': ' + messageObj.data.message.message)

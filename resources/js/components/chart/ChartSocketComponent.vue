@@ -29,7 +29,7 @@ export default {
     mounted() {
         const socket = io('/')
 
-        socket.on('news-action.:App\\Events\\PrivateMessage', (dataEvent) => {
+        socket.on('news-action.:App\\Events\\NewEvent', (dataEvent) => {
             console.log('dataEvent', dataEvent)
             // публичное поле из события laravel
             this.data = dataEvent.data.result

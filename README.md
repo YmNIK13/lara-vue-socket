@@ -20,7 +20,7 @@
 
 2. Добавляем пакет для работы с vue
 
-        composer requere laravel/ui
+        composer require laravel/ui
 
 3. Обновляем ноду до хотя бы 12.12
 
@@ -69,3 +69,28 @@
 
     REDIS_CLIENT=predis
     REDIS_PREFIX=''
+
+## nGinx
+
+Для корректной работы рекомендую проксировать через nGinx локальный порт. Для этого в конфиг nGinx стоит внести такой раздел
+    
+	# Requests for socket.io are passed on to Node on port 4242
+	location ~* \.io {
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Host $http_host;
+		proxy_set_header X-NginX-Proxy false;
+
+		proxy_pass http://localhost:4242;
+		proxy_redirect off;
+
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+	}
+
+где `proxy_pass http://localhost:4242;` это локальный адрес где запущен socket.io
+
+Если проксироваться таким образом, в клиенте указываем корень приложения, без портов и дургих проблем
+
+    const socket = io('/')
